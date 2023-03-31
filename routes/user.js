@@ -60,7 +60,7 @@ catch(error)
 })
 
 
-router.get('/twilio', async(req, res, next)=>{
+router.post('/twilio', async(req, res, next)=>{
     try{
         const{sid, token, phone, otpStr} = req.body
         const client = require("twilio")(sid, token);
