@@ -62,10 +62,8 @@ catch(error)
 
 router.get('/twilio', async(req, res, next)=>{
     try{
-        const{phone, otpStr} = req.body
-        const accountSid = "AC2c7356c7b394c3bcc5568f555f70a3d0";
-        const authToken = "78cb027b165f8269b0595da15b585066";
-        const client = require("twilio")(accountSid, authToken);
+        const{sid, token, phone, otpStr} = req.body
+        const client = require("twilio")(sid, token);
         client.messages
         .create({ body: otpStr, from: "+14345776178", to: phone })
         .then(message => console.log(message.sid));
